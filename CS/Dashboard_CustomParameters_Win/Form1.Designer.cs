@@ -33,7 +33,7 @@
             this.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dashboardViewer1.Location = new System.Drawing.Point(0, 0);
             this.dashboardViewer1.Name = "dashboardViewer1";
-            this.dashboardViewer1.Size = new System.Drawing.Size(969, 677);
+            this.dashboardViewer1.Size = new System.Drawing.Size(630, 448);
             this.dashboardViewer1.TabIndex = 0;
             this.dashboardViewer1.CustomParameters += new DevExpress.DashboardCommon.CustomParametersEventHandler(this.dashboardViewer1_CustomParameters);
             // 
@@ -41,7 +41,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 677);
+            this.ClientSize = new System.Drawing.Size(630, 448);
             this.Controls.Add(this.dashboardViewer1);
             this.Name = "Form1";
             this.Text = "Dashboard Viewer";
