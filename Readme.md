@@ -35,7 +35,7 @@ This query contains a [query parameter](https://docs.devexpress.com/Dashboard/11
 
 ### Bind the Query Parameter to the Dashboard Parameter
 
-To be able to change the query parameter's value, bind it to the **custIDDashboardParameter** dashboard parameter. To do this, on the next page of the **Query Editor** click **Add** to create a query parameter. Specify the parameter [settings](https://docs.devexpress.com/Dashboard/16169/). In the **Name** column, specify the name used in the query. Select the **Expression** checkbox and bind the query parameter to the dashboard parameter:
+To change the query parameter value dynamically, bind it to the **custIDDashboardParameter** dashboard parameter. To do this, on the next page of the **Query Editor**, click **Add** to create a query parameter. Specify the parameter [settings](https://docs.devexpress.com/Dashboard/16169/). In the **Name** column, specify the name used in the query. Select the **Expression** check box and bind the query parameter to the dashboard parameter:
 
 ![Query Parameter Settings](images/query-parameter-settings.png)
 
