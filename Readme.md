@@ -51,7 +51,7 @@ As a result, a user sees a dashboard based on the data from the SQL query with t
 
 ![Dashboard](images/screenshot.png)
 
-## Files to Review
+## Files to Review:
 
 * [Form1.cs](./CS/Dashboard_CustomParameters_Win/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CustomParameters_Win/Form1.vb))
 
@@ -60,7 +60,6 @@ As a result, a user sees a dashboard based on the data from the SQL query with t
 - [Dashboard Parameters](https://docs.devexpress.com/Dashboard/116918)
 - [Specify Dashboard Parameter Values in the Dashboard Viewer](https://docs.devexpress.com/Dashboard/17632/winforms-dashboard/winforms-viewer/manage-dashboard-parameters)
 - [Reference Dashboard Parameters](https://docs.devexpress.com/Dashboard/16170)
-
 
 ## More Examples
 
