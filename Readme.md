@@ -4,7 +4,7 @@
 <!-- default badges end -->
 # Dashboard for WinForms - How to Pass a Hidden Dashboard Parameter to a Custom SQL query
 
-This example shows how to pass a hidden [dashboard parameter](https://docs.devexpress.com/Dashboard/16169) to a [custom SQL query](https://docs.devexpress.com/Dashboard/115212). In this example, the[`DashboardViewer.CustomParameters`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) is handled to change the dashboard parameter's default value before it is passed to the query. 
+This example shows how to pass a hidden [dashboard parameter](https://docs.devexpress.com/Dashboard/16169) to a [custom SQL query](https://docs.devexpress.com/Dashboard/115212). In this example, the [`DashboardViewer.CustomParameters`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event is handled to change the dashboard parameter's default value before it is passed to the query. 
 
 ## Example Overview
 
@@ -16,7 +16,7 @@ In the [Dashboard Designer](https://docs.devexpress.com/Dashboard/117006/), crea
 
 Click the **Parameters** button from the **Dashboard** page group on the **Ribbon**'s **Home** page. Click **Add** to create a dashboard parameter. Diasble the [Visible](https://docs.devexpress.com/Dashboard/DevExpress.DashboardCommon.DashboardParameter.Visible) property to hide the parameter from the **Dashboard Parameters** dialog. In this example, the dashboard parameter's name is **custIDDashboardParameter** and its default value is *ALFKI*:
 
-![Dashbaord Parameter Settings](images/dashboard-parameter-settings.png)
+![Dashboard Parameter Settings](images/dashboard-parameter-settings.png)
 
 ### Create a Custom Query
 
@@ -26,7 +26,7 @@ Custom SQL queries are disabled by default. To allow users to specify custom SQL
 dashboardDesigner1.DataSourceWizard.SqlWizardSettings.EnableCustomSql = true;
 ```
 
-Specify the query in the **SQL string** editor in [Query Builder](https://docs.devexpress.com/Dashboard/16152)/[Query Editor](https://docs.devexpress.com/Dashboard/115206):
+Specify the query in the **SQL string** editor in the [Query Builder](https://docs.devexpress.com/Dashboard/16152)/[Query Editor](https://docs.devexpress.com/Dashboard/115206):
 
 ![Custom SQL Query with a Dashboard Parameter](images/custom-query.png)
 
@@ -47,7 +47,7 @@ Click **Finish**.
 
 Handle the [`DashboardViewer.CustomParameters`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event and specify the value to be passed to the query: [Form1.cs](./CS/Dashboard_CustomParameters_Win/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CustomParameters_Win/Form1.vb)).
 
-As the result, a user sees a dashboard based on the data from the SQL query with the **custIDQueryParameter** query parameter's value specified in the `DashboardViewer.CustomParameters` event handler (*AROUT*).
+As a result, a user sees a dashboard based on the data from the SQL query with the **custIDQueryParameter** query parameter's value specified in the `DashboardViewer.CustomParameters` event handler (*AROUT*).
 
 ![Dashboard](images/screenshot.png)
 
