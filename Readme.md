@@ -1,15 +1,55 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128581246/18.2.3%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T338459)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# Dashboard for WinForms - Pass a Hidden Dashboard Parameter to a Custom SQL query
+# Dashboard for WinForms - How to Pass a Hidden Dashboard Parameter to a Custom SQL query
 
-This example shows how to filter a custom SQL query by changing a parameter value in the [DashboardViewer.CustomParameters](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event handler.
+This example shows how to pass a hidden [dashboard parameter](https://docs.devexpress.com/Dashboard/16169) to a [custom SQL query](https://docs.devexpress.com/Dashboard/115212). In this example, the [`DashboardViewer.CustomParameters`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event is handled to change the dashboard parameter's default value before it is passed to the query. 
 
-The **custIDQueryParameter** query parameter is included in a **WHERE** clause of a [custom SQL query](https://docs.devexpress.com/Dashboard/115212). The **custIDQueryParameter** parameter is bound to the hidden **custIDDashboardParameter** dashboard parameter. The value of the dashboard parameter is changed at runtime in the [DashboardViewer.CustomParameters](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event handler. The [DashboardViewer.CustomParameters](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event is raised before the DashboardViewer queries a database.
+## Example Overview
 
-![screenshot](/images/screenshot.png)
+To pass a hidden dashboard parameter to a custom SQL query, do the following.
+
+### Create a Dashboard Parameter
+
+In the [Dashboard Designer](https://docs.devexpress.com/Dashboard/117006/), create a [dashboard parameter](https://docs.devexpress.com/Dashboard/16169/). 
+
+Click the **Parameters** button from the **Dashboard** page group on the **Ribbon**'s **Home** page. Click **Add** to create a dashboard parameter. Diasble the [Visible](https://docs.devexpress.com/Dashboard/DevExpress.DashboardCommon.DashboardParameter.Visible) property to hide the parameter from the **Dashboard Parameters** dialog. In this example, the dashboard parameter's name is **custIDDashboardParameter** and its default value is *ALFKI*:
+
+![Dashboard Parameter Settings](images/dashboard-parameter-settings.png)
+
+### Create a Custom Query
+
+Custom SQL queries are disabled by default. To allow users to specify custom SQL queries in the [Query Builder](https://docs.devexpress.com/Dashboard/16152)/[Query Editor](https://docs.devexpress.com/Dashboard/115206), set the [`SqlWizardSettings.EnableCustomSql`](https://docs.devexpress.com/Dashboard/DevExpress.DataAccess.UI.Wizard.SqlWizardSettings.EnableCustomSql) property exposed by the [`DashboardDataSourceWizardSettings`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardDataSourceWizardSettings) class to `true`. Add the following code to allow custom SQL queries:
+ 
+```csharp
+dashboardDesigner1.DataSourceWizard.SqlWizardSettings.EnableCustomSql = true;
+```
+
+Specify the query in the **SQL string** editor in the [Query Builder](https://docs.devexpress.com/Dashboard/16152)/[Query Editor](https://docs.devexpress.com/Dashboard/115206):
+
+![Custom SQL Query with a Dashboard Parameter](images/custom-query.png)
+
+This query contains a [query parameter](https://docs.devexpress.com/Dashboard/113947) named **custIDQueryParameter**.
+
+
+### Bind the Query Parameter to the Dashboard Parameter
+
+To change the query parameter value dynamically, bind it to the **custIDDashboardParameter** dashboard parameter. To do this, on the next page of the **Query Editor**, click **Add** to create a query parameter. Specify the parameter [settings](https://docs.devexpress.com/Dashboard/16169/). In the **Name** column, specify the name used in the query. Select the **Expression** check box and bind the query parameter to the dashboard parameter:
+
+![Query Parameter Settings](images/query-parameter-settings.png)
+
+Click **Finish**.
+
+### Change the Default Parameter Value in Code (Dashboard Viewer)
+
+[Load](https://docs.devexpress.com/Dashboard/16913/) the created dashboard to the [Dashboard Viewer](https://docs.devexpress.com/Dashboard/117122/).
+
+Handle the [`DashboardViewer.CustomParameters`](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters) event and specify the value to be passed to the query: [Form1.cs](./CS/Dashboard_CustomParameters_Win/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CustomParameters_Win/Form1.vb)).
+
+As a result, a user sees a dashboard based on the data from the SQL query with the **custIDQueryParameter** query parameter's value specified in the `DashboardViewer.CustomParameters` event handler (*AROUT*).
+
+![Dashboard](images/screenshot.png)
 
 ## Files to Review:
 
@@ -18,9 +58,8 @@ The **custIDQueryParameter** query parameter is included in a **WHERE** clause o
 ## Documentation
 
 - [Dashboard Parameters](https://docs.devexpress.com/Dashboard/116918)
-- [WinForms Viewer - Manage Dashboard Parameters](https://docs.devexpress.com/Dashboard/17632/winforms-dashboard/winforms-viewer/manage-dashboard-parameters)
-- [CustomParameters](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWin.DashboardViewer.CustomParameters)
-- [Pass Parameter Values](https://docs.devexpress.com/Dashboard/16170)
+- [Specify Dashboard Parameter Values in the Dashboard Viewer](https://docs.devexpress.com/Dashboard/17632/winforms-dashboard/winforms-viewer/manage-dashboard-parameters)
+- [Reference Dashboard Parameters](https://docs.devexpress.com/Dashboard/16170)
 
 ## More Examples
 
